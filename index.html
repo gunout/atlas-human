@@ -335,29 +335,30 @@
 <script type="module">
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 /* ============================================================
-   CONFIG — ORIGINAUX
+   CONFIG — FICHIERS COMPRESSÉS (GitHub Pages compatible)
    ============================================================ */
 const SYSTEMS = {
   full: {
     label: 'Corps complet',
     f: { composite: true, layers: [
-      { glb: '3d-vh-f-united.glb', graph: 'united.json', opacity: 0.12 },
+      { glb: 'united-f-opt.glb', graph: 'united.json', opacity: 0.12 },
       { glb: '3d-vh-f-blood-vasculature.glb', graph: 'graph.json', opacity: 0.85 },
       { glb: '3d-vh-f-heart.glb', graph: 'heart.json', opacity: 0.9 }
     ]},
     m: { composite: true, layers: [
-      { glb: '3d-vh-m-united.glb', graph: 'united1.json', opacity: 0.12 },
+      { glb: 'united-m-opt.glb', graph: 'united1.json', opacity: 0.12 },
       { glb: '3d-vh-m-blood-vasculature.glb', graph: 'graph(1).json', opacity: 0.85 },
       { glb: '3d-vh-m-heart.glb', graph: 'heart1.json', opacity: 0.9 }
     ]}
   },
   skin: {
     label: 'Peau / Tissus',
-    f: { glb: '3d-vh-f-united.glb', graph: 'united.json' },
-    m: { glb: '3d-vh-m-united.glb', graph: 'united1.json' }
+    f: { glb: 'united-f-opt.glb', graph: 'united.json' },
+    m: { glb: 'united-m-opt.glb', graph: 'united1.json' }
   },
   vasculature: {
     label: 'Vasculature',
@@ -519,9 +520,12 @@ gridHelper.position.y = -600;
 scene.add(gridHelper);
 
 /* ============================================================
-   GLTF LOADER
+   GLTF LOADER avec DRACOLoader (fichiers compressés)
    ============================================================ */
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
 const gltfLoader = new GLTFLoader();
+gltfLoader.setDRACOLoader(dracoLoader);
 
 /* ============================================================
    RAYCAST
@@ -549,10 +553,10 @@ function updateKeyboardPan(delta) {
   const speed = state.modelScale * 0.4 * delta;
   const target = controls.target;
   let moved = false;
-  if (keysPressed['ArrowUp'] || keysPressed['z'] || keysPressed['Z']) { target.y += speed; moved = true; }
+   if (keysPressed['ArrowUp'] || keysPressed['z'] || keysPressed['Z']) { target.y += speed; moved = true; }
   if (keysPressed['ArrowDown'] || keysPressed['s'] || keysPressed['S']) { target.y -= speed; moved = true; }
   if (keysPressed['ArrowLeft'] || keysPressed['q'] || keysPressed['Q']) { target.x -= speed; moved = true; }
-    if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) { target.x += speed; moved = true; }
+  if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) { target.x += speed; moved = true; }
   if (moved) controls.update();
 }
 
@@ -584,23 +588,16 @@ function computeGlobalScale(model) {
   return 1000 / (size.y || 1);
 }
 
-/* ⚠️ MATÉRIAUX NETS : MeshStandardMaterial + normales recalculées */
 function applyMaterials(model, opacity) {
   const list = [];
   model.traverse(o => {
     if (!o.isMesh) return;
-
-    // Recalculer les normales pour un rendu lisse
-    if (o.geometry) {
-      o.geometry.computeVertexNormals();
-    }
-
+    if (o.geometry) o.geometry.computeVertexNormals();
     const entry = graphByPath.get(o.name);
     const cat = classify(o.name);
     const baseColor = COLORS[cat];
     const op = cat === 'skin' ? 0.12 : opacity;
     const emissiveIntensity = (cat === 'artery' || cat === 'vein') ? 0.5 : 0.2;
-
     o.material = new THREE.MeshStandardMaterial({
       color: baseColor,
       emissive: baseColor,
@@ -715,7 +712,6 @@ async function loadSystem() {
     root.add(currentModel);
     state.loadedId = id;
 
-    /* Cadrage caméra */
     const box = new THREE.Box3().setFromObject(currentModel);
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
@@ -1236,11 +1232,11 @@ setTimeout(() => {
 }, 5000);
 
 /* ============================================================
-   BOOT
+   BOOT — vérifie les fichiers compressés
    ============================================================ */
 (async function boot() {
   const required = [
-    '3d-vh-f-united.glb', '3d-vh-m-united.glb',
+    'united-f-opt.glb', 'united-m-opt.glb',
     'united.json', 'united1.json'
   ];
   const missing = [];
