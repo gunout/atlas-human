@@ -1,11 +1,6 @@
+3d-vh-f-united.glb
+3d-vh-m-united.glb
 *.bak
 *.tmp
-*.blend1
 .DS_Store
-Thumbs.db
-*.log
 node_modules/
-package-lock.json
-.vscode/
-.idea/
-*.swp
