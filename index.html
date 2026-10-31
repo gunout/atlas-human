@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ATLAS 3D — Moniteur anatomique</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cyan: #00e5ff; --cyan-dim: #0095aa;
+    --red: #ff3b6b; --yellow: #ffd93b; --green: #00ff9d;
+    --purple: #a855f7; --orange: #ff8b3b;
+    --bg: #030812; --panel: rgba(6,18,34,0.82);
+    --border: rgba(0,229,255,0.22); --text: #c9e8f5; --text-dim: #6a8fa3;
+  }
+  html, body { height: 100%; overflow: hidden; background: var(--bg);
+    color: var(--text); font-family: 'SF Mono', 'Courier New', monospace;
+    font-size: 12px; -webkit-tap-highlight-color: transparent; }
+  body::before { content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(0,229,255,0.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,229,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px; pointer-events: none; z-index: 0; }
+
+  .app { position: relative; z-index: 1; height: 100vh;
+    display: grid; grid-template-columns: 240px 1fr 300px;
+    grid-template-rows: 48px 1fr 26px; gap: 6px; padding: 6px; }
+
+  .topbar { grid-column: 1 / -1; background: var(--panel);
+    border: 1px solid var(--border); border-radius: 4px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; backdrop-filter: blur(12px); position: relative; overflow: hidden; }
+  .topbar::before { content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), var(--red), transparent);
+    animation: scanH 5s linear infinite; }
+  @keyframes scanH { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  .brand { display: flex; align-items: center; gap: 10px;
+    font-weight: bold; letter-spacing: 2.5px; font-size: 14px; color: var(--cyan); }
+  .brand-logo { width: 24px; height: 24px; border: 2px solid var(--cyan);
+    border-radius: 50%; position: relative; box-shadow: 0 0 12px var(--cyan);
+    animation: spin 10s linear infinite; }
+  .brand-logo::after { content: ''; position: absolute; inset: 5px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 10px var(--red);
+    animation: pulse 2s ease-in-out infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.9); } }
+  .topbar-stats { display: flex; gap: 18px; font-size: 11px; }
+  .stat-item { display: flex; flex-direction: column; gap: 1px; }
+  .stat-label { opacity: .5; font-size: 9px; letter-spacing: 1px; }
+  .stat-value { font-weight: bold; color: var(--cyan); }
+
+  .panel { background: var(--panel); border: 1px solid var(--border);
+    border-radius: 4px; backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; overflow: hidden; }
+  .panel-header { padding: 8px 12px; border-bottom: 1px solid var(--border);
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--cyan); background: rgba(0,229,255,0.04); flex-shrink: 0;
+    display: flex; justify-content: space-between; }
+  .panel-header .title::before { content: '▸ '; color: var(--red);
+    animation: blink 1.2s infinite; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .2; } }
+  .panel-body { padding: 10px 12px; overflow-y: auto; flex: 1; }
+  .panel-body::-webkit-scrollbar { width: 3px; }
+  .panel-body::-webkit-scrollbar-thumb { background: var(--cyan-dim); }
+
+  .section { border-bottom: 1px solid rgba(0,229,255,0.1); padding: 10px 0; }
+  .section:last-child { border-bottom: none; }
+  .section-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--cyan); opacity: .8; margin-bottom: 8px; }
+  .toggle { display: flex; align-items: center; gap: 8px;
+    padding: 5px 0; cursor: pointer; font-size: 11px; }
+  .toggle input { accent-color: var(--cyan); cursor: pointer; }
+  .toggle .swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+  .toggle .count { margin-left: auto; font-size: 9px; opacity: .5; }
+
+  select { width: 100%; background: rgba(0,229,255,0.05); border: 1px solid var(--border);
+    color: var(--text); padding: 7px 10px; font-family: inherit; font-size: 11px;
+    border-radius: 3px; outline: none; }
+  select:focus { border-color: var(--cyan); }
+
+  .viewport { position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at center, #0a1220 0%, #02040a 100%); }
+  #scene { width: 100%; height: 100%; display: block; touch-action: none; }
+
+  .vp-overlay { position: absolute; inset: 0; pointer-events: none; padding: 12px;
+    display: flex; flex-direction: column; justify-content: space-between; }
+  .vp-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .vp-info-box { background: rgba(0,0,0,0.7); border: 1px solid var(--border);
+    border-radius: 3px; padding: 8px 10px; backdrop-filter: blur(6px);
+    font-size: 10px; line-height: 1.5; max-width: 280px; pointer-events: auto; }
+  .vp-info-box .k { color: var(--cyan); opacity: .75; }
+  .vp-info-box .v { color: var(--text); }
+  #structureInfo { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,229,255,0.3);
+    min-width: 240px; display: none; }
+  #structureInfo .v { color: var(--green); font-weight: bold; }
+
+  .vp-toolbar { position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 4px; background: rgba(0,0,0,0.7); border: 1px solid var(--border);
+    border-radius: 4px; padding: 4px; backdrop-filter: blur(8px);
+    pointer-events: auto; z-index: 10; flex-wrap: wrap; justify-content: center;
+    max-width: calc(100% - 24px); }
+  .vp-tool { padding: 6px 10px; background: transparent; border: none;
+    color: var(--text-dim); font-family: inherit; font-size: 10px;
+    cursor: pointer; border-radius: 2px; transition: all .2s; }
+  .vp-tool:hover { background: rgba(0,229,255,.15); color: var(--cyan); }
+  .vp-tool.active { background: rgba(0,229,255,.25); color: var(--cyan); }
+
+  .corner { position: absolute; width: 18px; height: 18px;
+    border: 2px solid var(--cyan); opacity: .4; }
+  .corner.tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+  .corner.br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+  #search { width: 100%; background: rgba(0,229,255,0.05); border: 1px solid var(--border);
+    color: var(--cyan); padding: 7px 10px; font-family: inherit; font-size: 11px;
+    border-radius: 3px; outline: none; margin-bottom: 8px; }
+  #search:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,229,255,.3); }
+  #structure-list { flex: 1; overflow-y: auto; }
+  #structure-list::-webkit-scrollbar { width: 3px; }
+  #structure-list::-webkit-scrollbar-thumb { background: var(--cyan-dim); }
+  .structure-item { padding: 7px 9px; border-bottom: 1px solid rgba(0,229,255,0.06);
+    cursor: pointer; font-size: 11px; transition: all .15s;
+    display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .structure-item:hover { background: rgba(0,229,255,.08); }
+  .structure-item.selected { background: rgba(0,229,255,.15);
+    border-left: 3px solid var(--cyan); padding-left: 6px; }
+  .structure-item .name { flex: 1; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; }
+  .structure-item .cat { font-size: 8.5px; padding: 1px 5px;
+    border-radius: 2px; letter-spacing: .5px; }
+
+  .statusbar { grid-column: 1 / -1; background: rgba(10,24,44,.9);
+    border: 1px solid var(--border); border-radius: 3px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px; font-size: 9.5px; letter-spacing: .8px; color: var(--text-dim); }
+  .status-left, .status-right { display: flex; gap: 14px; flex-wrap: wrap; }
+  .status-dot { display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; margin-right: 5px; background: var(--green);
+    box-shadow: 0 0 6px var(--green); animation: pulse 1.8s infinite; }
+
+  #loading { position: absolute; inset: 0; background: rgba(3,8,18,.95);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 14px; z-index: 50; }
+  #loading .spinner { width: 40px; height: 40px; border: 3px solid var(--border);
+    border-top-color: var(--cyan); border-radius: 50%;
+    animation: spin .8s linear infinite; }
+  #loading .msg { color: var(--cyan); font-size: 12px; letter-spacing: 1.5px; }
+  #loading .progress-bar { width: 280px; height: 4px; background: rgba(0,229,255,.15);
+    border-radius: 2px; overflow: hidden; margin-top: 8px; }
+  #loading .progress-fill { height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    box-shadow: 0 0 10px var(--cyan); transition: width .3s; }
+  #loading.hidden { display: none; }
+
+  .toast-container { position: fixed; bottom: 40px; right: 20px;
+    display: flex; flex-direction: column; gap: 8px; z-index: 1000; max-width: 90vw; }
+  .toast { padding: 10px 14px; background: rgba(10,24,44,.95);
+    border: 1px solid var(--cyan); border-left: 3px solid var(--cyan);
+    border-radius: 3px; font-size: 11px; color: var(--text);
+    box-shadow: 0 0 20px rgba(0,229,255,.25); min-width: 220px;
+    animation: slideIn .3s ease-out; }
+  .toast.warn { border-color: var(--yellow); border-left-color: var(--yellow); }
+  .toast.crit { border-color: var(--red); border-left-color: var(--red); }
+  .toast.ok { border-color: var(--green); border-left-color: var(--green); }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+  .scanlines { position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px,
+      rgba(0,229,255,0.022) 3px, rgba(0,229,255,0.022) 4px); }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: 48px 1fr 200px 26px; }
+    .panel:first-of-type { display: none; }
+    .panel:last-of-type { grid-row: 3; }
+  }
+  @media (max-width: 500px) {
+    .topbar-stats { display: none; }
+    .brand { font-size: 11px; letter-spacing: 1.5px; }
+    #structureInfo { min-width: auto; font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      ATLAS 3D <span style="opacity:.4">MONITOR</span>
+    </div>
+    <div class="topbar-stats">
+      <div class="stat-item"><span class="stat-label">SYSTÈME</span>
+        <span class="stat-value" id="statSystem">CORPS COMPLET</span></div>
+      <div class="stat-item"><span class="stat-label">SEXE</span>
+        <span class="stat-value" id="statSex">♀ FEMME</span></div>
+      <div class="stat-item"><span class="stat-label">STRUCTURES</span>
+        <span class="stat-value" id="statCount">--</span></div>
+      <div class="stat-item"><span class="stat-label">VISIBLES</span>
+        <span class="stat-value" id="statVisible">--</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header"><span class="title">Couches</span></div>
+    <div class="panel-body">
+      <div class="section">
+        <div class="section-title">Système</div>
+        <select id="systemSelect">
+          <option value="full">Corps complet (superposé)</option>
+          <option value="skin">Peau / Tissus</option>
+          <option value="vasculature">Vasculature</option>
+          <option value="heart">Cœur</option>
+          <option value="brain">Cerveau</option>
+        </select>
+      </div>
+      <div class="section">
+        <div class="section-title">Sexe</div>
+        <select id="sexSelect">
+          <option value="f">♀ Femme</option>
+          <option value="m">♂ Homme</option>
+        </select>
+      </div>
+      <div class="section">
+        <div class="section-title">Filtres</div>
+        <label class="toggle"><input type="checkbox" id="f-skin" checked>
+          <span class="swatch" style="background:#f5d0b0"></span> Peau
+          <span class="count" id="c-skin">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-organ" checked>
+          <span class="swatch" style="background:#cc8866"></span> Organes
+          <span class="count" id="c-organ">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-artery" checked>
+          <span class="swatch" style="background:#d4243c"></span> Artères
+          <span class="count" id="c-artery">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-vein" checked>
+          <span class="swatch" style="background:#3a6bc4"></span> Veines
+          <span class="count" id="c-vein">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-heart" checked>
+          <span class="swatch" style="background:#c44569"></span> Cœur
+          <span class="count" id="c-heart">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-brain" checked>
+          <span class="swatch" style="background:#b8a2d8"></span> Cerveau
+          <span class="count" id="c-brain">0</span></label>
+        <label class="toggle"><input type="checkbox" id="f-other" checked>
+          <span class="swatch" style="background:#8a9aaa"></span> Autres
+          <span class="count" id="c-other">0</span></label>
+      </div>
+      <div class="section">
+        <div class="section-title">Options</div>
+        <label class="toggle"><input type="checkbox" id="f-labels"> Afficher les labels</label>
+        <label class="toggle"><input type="checkbox" id="f-rotate"> Rotation automatique</label>
+        <label class="toggle"><input type="checkbox" id="f-grid" checked> Grille de sol</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel viewport" id="viewport">
+    <canvas id="scene"></canvas>
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+    <div class="vp-overlay">
+      <div class="vp-row">
+        <div class="vp-info-box">
+          <div><span class="k">SYSTÈME :</span> <span class="v" id="vpSystem">Corps complet</span></div>
+          <div><span class="k">SEXE :</span> <span class="v" id="vpSex">Femme</span></div>
+        </div>
+        <div class="vp-info-box" id="structureInfo">
+          <div><span class="k">STRUCTURE :</span> <span class="v" id="structureLabel">—</span></div>
+          <div><span class="k">CATÉGORIE :</span> <span class="v" id="structureCategory">—</span></div>
+          <div><span class="k">ID :</span> <span class="v" id="structureId">—</span></div>
+        </div>
+      </div>
+      <div class="vp-row" style="align-items:flex-end">
+        <div class="vp-info-box" style="font-size:9px">
+          <span class="k">SOURCE :</span> HuBMAP / Human Reference Atlas
+        </div>
+      </div>
+    </div>
+    <div class="vp-toolbar">
+      <button class="vp-tool active" data-view="3d">🌐 3D</button>
+      <button class="vp-tool" data-view="front">👤 Face</button>
+      <button class="vp-tool" data-view="back">🔄 Dos</button>
+      <button class="vp-tool" data-view="axial">⬛ Axial</button>
+      <button class="vp-tool" data-view="coronal">▭ Coronal</button>
+      <button class="vp-tool" data-view="sagittal">▯ Sagittal</button>
+      <button class="vp-tool" id="btnPan">✥ Pan</button>
+      <button class="vp-tool" id="btnXRay">🔍 X-Ray</button>
+      <button class="vp-tool" id="btnSnapshot">📸</button>
+      <button class="vp-tool" id="btnFullscreen">⛶</button>
+      <button class="vp-tool" data-view="reset">↺ Reset</button>
+    </div>
+    <div id="loading">
+      <div class="spinner"></div>
+      <div class="msg">CHARGEMENT DE L'ATLAS…</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header"><span class="title">Structures</span>
+      <span style="opacity:.5" id="listCount">0</span></div>
+    <div class="panel-body" style="display:flex; flex-direction:column; padding:0">
+      <div style="padding:10px 12px; border-bottom:1px solid var(--border)">
+        <input type="text" id="search" placeholder="🔍 Rechercher…">
+      </div>
+      <div id="structure-list"></div>
+    </div>
+  </div>
+
+  <div class="statusbar">
+    <div class="status-left">
+      <span><span class="status-dot"></span>ONLINE</span>
+      <span>WebGL : <span style="color:var(--green)" id="glStatus">OK</span></span>
+      <span>Meshes : <span style="color:var(--cyan)" id="meshCount">0</span></span>
+      <span>Pan : <span style="color:var(--yellow)" id="panStatus">OFF</span></span>
+    </div>
+    <div class="status-right">
+      <span id="statusFps">FPS : 60</span>
+      <span id="statusTime">--:--:--</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<div class="scanlines"></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ============================================================
+   CONFIG — ORIGINAUX
+   ============================================================ */
+const SYSTEMS = {
+  full: {
+    label: 'Corps complet',
+    f: { composite: true, layers: [
+      { glb: '3d-vh-f-united.glb', graph: 'united.json', opacity: 0.12 },
+      { glb: '3d-vh-f-blood-vasculature.glb', graph: 'graph.json', opacity: 0.85 },
+      { glb: '3d-vh-f-heart.glb', graph: 'heart.json', opacity: 0.9 }
+    ]},
+    m: { composite: true, layers: [
+      { glb: '3d-vh-m-united.glb', graph: 'united1.json', opacity: 0.12 },
+      { glb: '3d-vh-m-blood-vasculature.glb', graph: 'graph(1).json', opacity: 0.85 },
+      { glb: '3d-vh-m-heart.glb', graph: 'heart1.json', opacity: 0.9 }
+    ]}
+  },
+  skin: {
+    label: 'Peau / Tissus',
+    f: { glb: '3d-vh-f-united.glb', graph: 'united.json' },
+    m: { glb: '3d-vh-m-united.glb', graph: 'united1.json' }
+  },
+  vasculature: {
+    label: 'Vasculature',
+    f: { glb: '3d-vh-f-blood-vasculature.glb', graph: 'graph.json' },
+    m: { glb: '3d-vh-m-blood-vasculature.glb', graph: 'graph(1).json' }
+  },
+  heart: {
+    label: 'Cœur',
+    f: { glb: '3d-vh-f-heart.glb', graph: 'heart.json' },
+    m: { glb: '3d-vh-m-heart.glb', graph: 'heart1.json' }
+  },
+  brain: {
+    label: 'Cerveau',
+    f: { glb: '3d-allen-f-brain.glb', graph: 'brain.json' },
+    m: { glb: '3d-allen-m-brain.glb', graph: 'brain1.json' }
+  }
+};
+
+const COLORS = {
+  artery: 0xd4243c, vein: 0x3a6bc4, heart: 0xc44569,
+  brain: 0xb8a2d8, skin: 0xf5d0b0, organ: 0xcc8866,
+  other: 0x8a9aaa, highlight: 0xffcc00
+};
+const HEX = {
+  artery: '#d4243c', vein: '#3a6bc4', heart: '#c44569',
+  brain: '#b8a2d8', skin: '#f5d0b0', organ: '#cc8866',
+  other: '#8a9aaa'
+};
+
+const RE = {
+  skin:   /skin|epidermis|dermis|adipose|fat|nipple|areola|mammary|lactiferous|suspensory|tubercle/i,
+  artery: /artery|aorta|trunk|carotid|subclavian|brachiocephalic|celiac|mesenteric|renal_artery|ciliary|ophthalmic_artery|coronary|marginal_artery|colic_artery|sigmoid_artery|hepatic_artery|pudendal_artery|iliac_artery|vertebral_artery/i,
+  vein:   /vein|vena|cava|sinus/i,
+  heart:  /heart|ventricle|atrium|myocard|septum|valve|auricle|apex|cardiac/i,
+  brain:  /brain|cortex|cerebr|cerebel|thalam|hippocamp|striat|amygdala|midbrain|pons|medulla|white_matter|gray_matter|gyrus|sulcus|lobe/i,
+  organ:  /liver|kidney|lung|intestine|stomach|pancreas|spleen|bladder|uterus|ovary|prostate|trachea|bronchus|larynx|esophagus|thyroid|thymus|ureter|pelvis|sternum|manubrium|knee|disc|placenta|lymph|tonsil|mouth|eye|breast/i
+};
+
+function classify(name) {
+  if (RE.skin.test(name)) return 'skin';
+  if (RE.brain.test(name)) return 'brain';
+  if (RE.heart.test(name)) return 'heart';
+  if (RE.artery.test(name)) return 'artery';
+  if (RE.vein.test(name)) return 'vein';
+  if (RE.organ.test(name)) return 'organ';
+  return 'other';
+}
+
+/* ============================================================
+   ÉTAT
+   ============================================================ */
+const state = {
+  system: 'full',
+  sex: 'f',
+  filters: { skin: true, organ: true, artery: true, vein: true,
+             heart: true, brain: true, other: true },
+  showLabels: false,
+  autoRotate: false,
+  showGrid: true,
+  search: '',
+  hovered: null,
+  selected: null,
+  loadedId: null,
+  panMode: false,
+  modelScale: 1000,
+  camAnimating: false
+};
+
+/* ============================================================
+   CANVAS + CONTEXT LOSS
+   ============================================================ */
+const canvas = document.getElementById('scene');
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+canvas.addEventListener('webglcontextlost', (e) => {
+  e.preventDefault();
+  addToast('⚠️ Contexte WebGL perdu — rechargez la page', 'crit');
+});
+canvas.addEventListener('webglcontextrestored', () => {
+  addToast('✓ Contexte WebGL restauré', 'ok');
+});
+
+/* ============================================================
+   RENDERER — HAUTE RÉSOLUTION
+   ============================================================ */
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true,
+  powerPreference: 'high-performance'
+});
+const maxPixelRatio = isMobile ? 2.0 : 2.5;
+renderer.setPixelRatio(Math.min(devicePixelRatio, maxPixelRatio));
+renderer.setClearColor(0x000000, 0);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x050810, 0.0004);
+
+/* ============================================================
+   CAMÉRA
+   ============================================================ */
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 20000);
+camera.position.set(0, 0, 2500);
+
+/* ============================================================
+   ORBIT CONTROLS — 360° CONFORTABLE
+   ============================================================ */
+const controls = new OrbitControls(camera, canvas);
+controls.minPolarAngle = 0;
+controls.maxPolarAngle = Math.PI;
+controls.minAzimuthAngle = -Infinity;
+controls.maxAzimuthAngle = Infinity;
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.rotateSpeed = 0.8;
+controls.zoomSpeed = 0.6;
+controls.panSpeed = 1.0;
+controls.enablePan = true;
+controls.screenSpacePanning = true;
+controls.keyPanSpeed = 30;
+controls.maxTargetRadius = Infinity;
+controls.mouseButtons = {
+  LEFT: THREE.MOUSE.ROTATE,
+  MIDDLE: THREE.MOUSE.DOLLY,
+  RIGHT: THREE.MOUSE.PAN
+};
+controls.touches = {
+  ONE: THREE.TOUCH.ROTATE,
+  TWO: THREE.TOUCH.DOLLY_PAN
+};
+
+/* ============================================================
+   LUMIÈRES
+   ============================================================ */
+scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+keyLight.position.set(5, 8, 6); scene.add(keyLight);
+const fillLight = new THREE.DirectionalLight(0x6688aa, 0.4);
+fillLight.position.set(-4, 2, 3); scene.add(fillLight);
+const rimLight = new THREE.DirectionalLight(0xff6644, 0.3);
+rimLight.position.set(-2, 3, -6); scene.add(rimLight);
+
+/* ============================================================
+   GROUPES
+   ============================================================ */
+const root = new THREE.Group();
+scene.add(root);
+const labelsGroup = new THREE.Group();
+labelsGroup.visible = false;
+scene.add(labelsGroup);
+
+const gridHelper = new THREE.GridHelper(2000, 40, 0x00e5ff, 0x1e3d55);
+gridHelper.material.opacity = 0.15;
+gridHelper.material.transparent = true;
+gridHelper.position.y = -600;
+scene.add(gridHelper);
+
+/* ============================================================
+   GLTF LOADER
+   ============================================================ */
+const gltfLoader = new GLTFLoader();
+
+/* ============================================================
+   RAYCAST
+   ============================================================ */
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+let currentModel = null;
+let meshList = [];
+let graphByPath = new Map();
+let hoveredMesh = null;
+let selectedMesh = null;
+
+/* ============================================================
+   PAN CLAVIER
+   ============================================================ */
+const keysPressed = {};
+addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  keysPressed[e.key] = true;
+});
+addEventListener('keyup', (e) => { keysPressed[e.key] = false; });
+
+function updateKeyboardPan(delta) {
+  if (!currentModel || state.camAnimating) return;
+  const speed = state.modelScale * 0.4 * delta;
+  const target = controls.target;
+  let moved = false;
+  if (keysPressed['ArrowUp'] || keysPressed['z'] || keysPressed['Z']) { target.y += speed; moved = true; }
+  if (keysPressed['ArrowDown'] || keysPressed['s'] || keysPressed['S']) { target.y -= speed; moved = true; }
+  if (keysPressed['ArrowLeft'] || keysPressed['q'] || keysPressed['Q']) { target.x -= speed; moved = true; }
+    if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) { target.x += speed; moved = true; }
+  if (moved) controls.update();
+}
+
+/* ============================================================
+   CHARGEMENT
+   ============================================================ */
+function setLoading(on, msg, progress = null) {
+  const el = document.getElementById('loading');
+  if (msg) el.querySelector('.msg').textContent = msg;
+  const fill = document.getElementById('progressFill');
+  if (progress !== null && fill) fill.style.width = progress + '%';
+  if (!on) setTimeout(() => { if (fill) fill.style.width = '0%'; }, 500);
+  el.classList.toggle('hidden', !on);
+}
+
+function disposeTree(obj) {
+  obj.traverse(o => {
+    o.geometry?.dispose?.();
+    if (o.material) {
+      if (Array.isArray(o.material)) o.material.forEach(m => m.dispose?.());
+      else o.material.dispose?.();
+    }
+  });
+}
+
+function computeGlobalScale(model) {
+  const box = new THREE.Box3().setFromObject(model);
+  const size = box.getSize(new THREE.Vector3());
+  return 1000 / (size.y || 1);
+}
+
+/* ⚠️ MATÉRIAUX NETS : MeshStandardMaterial + normales recalculées */
+function applyMaterials(model, opacity) {
+  const list = [];
+  model.traverse(o => {
+    if (!o.isMesh) return;
+
+    // Recalculer les normales pour un rendu lisse
+    if (o.geometry) {
+      o.geometry.computeVertexNormals();
+    }
+
+    const entry = graphByPath.get(o.name);
+    const cat = classify(o.name);
+    const baseColor = COLORS[cat];
+    const op = cat === 'skin' ? 0.12 : opacity;
+    const emissiveIntensity = (cat === 'artery' || cat === 'vein') ? 0.5 : 0.2;
+
+    o.material = new THREE.MeshStandardMaterial({
+      color: baseColor,
+      emissive: baseColor,
+      emissiveIntensity: cat === 'skin' ? 0.03 : emissiveIntensity,
+      roughness: 0.6,
+      metalness: 0.05,
+      transparent: true,
+      opacity: op,
+      depthWrite: op >= 0.95 && cat !== 'skin',
+      side: THREE.DoubleSide,
+      flatShading: false
+    });
+    o.userData = { entry, baseColor, category: cat, layerOpacity: op };
+    list.push(o);
+  });
+  return list;
+}
+
+function loadLayerWithProgress(layer, layerIndex, totalLayers) {
+  return new Promise((resolve, reject) => {
+    gltfLoader.load(
+      layer.glb,
+      (gltf) => resolve(gltf),
+      (progress) => {
+        if (progress.total) {
+          const layerPct = progress.loaded / progress.total;
+          const globalPct = Math.round(((layerIndex + layerPct) / totalLayers) * 100);
+          setLoading(true, `CHARGEMENT ${layer.glb} — ${globalPct}%`, globalPct);
+        }
+      },
+      (err) => reject(err)
+    );
+  });
+}
+
+async function loadSystem() {
+  const cfg = SYSTEMS[state.system]?.[state.sex];
+  if (!cfg) return;
+  const id = `${state.system}:${state.sex}`;
+  if (state.loadedId === id) return;
+
+  setLoading(true, `CHARGEMENT ${SYSTEMS[state.system].label.toUpperCase()} — ${state.sex === 'f' ? 'FEMME' : 'HOMME'}…`, 0);
+
+  if (currentModel) {
+    root.remove(currentModel);
+    disposeTree(currentModel);
+  }
+  while (labelsGroup.children.length) {
+    const c = labelsGroup.children.pop();
+    c.material?.map?.dispose();
+    c.material?.dispose();
+  }
+  meshList = [];
+  graphByPath = new Map();
+  hoveredMesh = null;
+  selectedMesh = null;
+  document.getElementById('structureInfo').style.display = 'none';
+
+  try {
+    if (cfg.composite) {
+      const group = new THREE.Group();
+      group.name = id;
+      let globalScale = null;
+      const totalLayers = cfg.layers.length;
+
+      for (let i = 0; i < totalLayers; i++) {
+        const layer = cfg.layers[i];
+        const gltf = await loadLayerWithProgress(layer, i, totalLayers);
+        const graph = await fetch(layer.graph).then(r => r.json()).catch(() => ({ data: [] }));
+        (graph.data || []).forEach(entry => {
+          const fp = entry.object_reference?.file_subpath;
+          if (fp) graphByPath.set(fp, entry);
+        });
+        const layerModel = gltf.scene;
+
+        if (globalScale === null) {
+          globalScale = computeGlobalScale(layerModel);
+          console.log('[SCALE] Échelle globale calculée :', globalScale);
+        }
+        layerModel.scale.setScalar(globalScale);
+        if (layer.scale && layer.scale !== 1) layerModel.scale.multiplyScalar(layer.scale);
+        if (layer.offset) layerModel.position.add(new THREE.Vector3(...layer.offset));
+
+        const meshes = applyMaterials(layerModel, layer.opacity ?? 0.85);
+        meshList.push(...meshes);
+        group.add(layerModel);
+      }
+
+      const box = new THREE.Box3().setFromObject(group);
+      const center = box.getCenter(new THREE.Vector3());
+      group.position.sub(center);
+      currentModel = group;
+    } else {
+      const gltf = await loadLayerWithProgress({ glb: cfg.glb }, 0, 1);
+      const graph = await fetch(cfg.graph).then(r => r.json());
+      (graph.data || []).forEach(entry => {
+        const fp = entry.object_reference?.file_subpath;
+        if (fp) graphByPath.set(fp, entry);
+      });
+      const model = gltf.scene;
+      const globalScale = computeGlobalScale(model);
+      console.log('[SCALE] Échelle simple :', globalScale);
+      model.scale.setScalar(globalScale);
+
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      meshList = applyMaterials(model, 0.9);
+      currentModel = model;
+    }
+
+    root.add(currentModel);
+    state.loadedId = id;
+
+    /* Cadrage caméra */
+    const box = new THREE.Box3().setFromObject(currentModel);
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+
+    controls.target.copy(center);
+    camera.position.set(center.x, center.y, center.z + maxDim * 1.4);
+    controls.minDistance = maxDim * 0.05;
+    controls.maxDistance = maxDim * 3.0;
+    controls.update();
+    state.modelScale = maxDim;
+    gridHelper.position.y = center.y - maxDim * 0.6;
+
+    console.log('[CAM] maxDim =', maxDim.toFixed(2),
+                '| minDist =', controls.minDistance.toFixed(2),
+                '| maxDist =', controls.maxDistance.toFixed(2));
+
+    buildLabels();
+    updateCounts();
+    applyFilters();
+    buildStructureList();
+    updateTopbarStats();
+
+    setLoading(false);
+    addToast(`✓ ${SYSTEMS[state.system].label} chargé — ${meshList.length} meshes`, 'ok');
+  } catch (err) {
+    console.error(err);
+    setLoading(false);
+    addToast('⚠ Erreur de chargement : ' + err.message, 'crit');
+  }
+}
+
+/* ============================================================
+   LABELS
+   ============================================================ */
+function buildLabels() {
+  meshList.forEach(mesh => {
+    const box = new THREE.Box3().setFromObject(mesh);
+    const c = box.getCenter(new THREE.Vector3());
+    const label = mesh.userData.entry?.pref_label
+      || mesh.name.replace(/^VH_[FM]_|^Allen_/i, '').replace(/_/g, ' ');
+    const sprite = makeTextSprite(label);
+    sprite.position.copy(c);
+    sprite.userData.meshRef = mesh;
+    labelsGroup.add(sprite);
+  });
+  labelsGroup.visible = state.showLabels;
+}
+
+function makeTextSprite(text) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.font = 'bold 24px system-ui, sans-serif';
+  const w = ctx.measureText(text).width + 24;
+  canvas.width = Math.ceil(w);
+  canvas.height = 40;
+  const c2 = canvas.getContext('2d');
+  c2.font = 'bold 24px system-ui, sans-serif';
+  c2.fillStyle = 'rgba(10,21,32,0.85)';
+  c2.fillRect(0, 0, canvas.width, canvas.height);
+  c2.strokeStyle = '#00e5ff';
+  c2.lineWidth = 2;
+  c2.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+  c2.fillStyle = '#c9e8f5';
+  c2.fillText(text, 12, 28);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.minFilter = THREE.LinearFilter;
+  const mat = new THREE.SpriteMaterial({
+    map: tex, transparent: true, depthTest: false, depthWrite: false
+  });
+  const spr = new THREE.Sprite(mat);
+  spr.scale.set(canvas.width * 4, canvas.height * 4, 1);
+  return spr;
+}
+
+/* ============================================================
+   FILTRES
+   ============================================================ */
+function applyFilters() {
+  const q = state.search.toLowerCase().trim();
+  meshList.forEach(mesh => {
+    const cat = mesh.userData.category;
+    let visible = state.filters[cat] !== false;
+    if (q) {
+      const label = (mesh.userData.entry?.pref_label || '').toLowerCase();
+      const name = mesh.name.toLowerCase();
+      visible = visible && (name.includes(q) || label.includes(q));
+    }
+    mesh.visible = visible;
+    mesh.material.opacity = visible ? (mesh.userData.layerOpacity ?? 0.9) : 0;
+  });
+  labelsGroup.children.forEach(spr => {
+    const mesh = spr.userData.meshRef;
+    spr.visible = mesh && mesh.visible;
+  });
+  updateCounts();
+}
+
+function updateCounts() {
+  const counts = { skin: 0, organ: 0, artery: 0, vein: 0, heart: 0, brain: 0, other: 0 };
+  let visibleCount = 0;
+  meshList.forEach(mesh => {
+    counts[mesh.userData.category]++;
+    if (mesh.visible) visibleCount++;
+  });
+  Object.keys(counts).forEach(cat => {
+    const el = document.getElementById(`c-${cat}`);
+    if (el) el.textContent = counts[cat];
+  });
+  document.getElementById('statCount').textContent = meshList.length;
+  document.getElementById('statVisible').textContent = visibleCount;
+  document.getElementById('meshCount').textContent = meshList.length;
+}
+
+function updateTopbarStats() {
+  document.getElementById('statSystem').textContent = SYSTEMS[state.system].label.toUpperCase();
+  document.getElementById('statSex').textContent = state.sex === 'f' ? '♀ FEMME' : '♂ HOMME';
+  document.getElementById('vpSystem').textContent = SYSTEMS[state.system].label;
+  document.getElementById('vpSex').textContent = state.sex === 'f' ? 'Femme' : 'Homme';
+}
+
+/* ============================================================
+   LISTE DES STRUCTURES
+   ============================================================ */
+function buildStructureList() {
+  const q = state.search.toLowerCase().trim();
+  const items = meshList.filter(mesh => !q ||
+    mesh.name.toLowerCase().includes(q) ||
+    (mesh.userData.entry?.pref_label || '').toLowerCase().includes(q)
+  ).slice(0, 200);
+
+  const listEl = document.getElementById('structure-list');
+  listEl.innerHTML = items.map(mesh => {
+    const name = mesh.userData.entry?.pref_label
+      || mesh.name.replace(/^VH_[FM]_|^Allen_/i, '').replace(/_/g, ' ');
+    const cat = mesh.userData.category;
+    const sel = selectedMesh === mesh ? ' selected' : '';
+    return `<div class="structure-item${sel}" data-name="${mesh.name}">
+      <span class="name">${name}</span>
+      <span class="cat" style="background:${HEX[cat]}33;color:${HEX[cat]}">${cat}</span>
+    </div>`;
+  }).join('');
+
+  listEl.querySelectorAll('.structure-item').forEach(el => {
+    el.onclick = () => {
+      const mesh = meshList.find(x => x.name === el.dataset.name);
+      if (mesh) selectMesh(mesh);
+    };
+  });
+
+  document.getElementById('listCount').textContent = items.length;
+}
+
+/* ============================================================
+   SÉLECTION + RECENTRAGE ANIMÉ
+   ============================================================ */
+function highlight(mesh, on) {
+  if (!mesh) return;
+  if (on) {
+    mesh.material.color.setHex(COLORS.highlight);
+    mesh.material.emissive.setHex(COLORS.highlight);
+    mesh.material.emissiveIntensity = 0.6;
+  } else {
+    mesh.material.color.setHex(mesh.userData.baseColor);
+    mesh.material.emissive.setHex(mesh.userData.baseColor);
+    mesh.material.emissiveIntensity = mesh.userData.category === 'skin' ? 0.03 : 0.2;
+  }
+}
+
+function flyTo(targetPosition, targetLookAt, duration = 700) {
+  if (state.camAnimating) return;
+  state.camAnimating = true;
+  const startPos = camera.position.clone();
+  const startTarget = controls.target.clone();
+  const startTime = performance.now();
+
+  function step() {
+    const t = Math.min((performance.now() - startTime) / duration, 1);
+    const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    camera.position.lerpVectors(startPos, targetPosition, ease);
+    controls.target.lerpVectors(startTarget, targetLookAt, ease);
+    controls.update();
+    if (t < 1) requestAnimationFrame(step);
+    else state.camAnimating = false;
+  }
+  requestAnimationFrame(step);
+}
+
+function selectMesh(mesh) {
+  if (selectedMesh) highlight(selectedMesh, false);
+  if (selectedMesh === mesh) {
+    selectedMesh = null;
+    document.getElementById('structureInfo').style.display = 'none';
+    buildStructureList();
+    return;
+  }
+  selectedMesh = mesh;
+  highlight(mesh, true);
+  showStructureInfo(mesh);
+  buildStructureList();
+
+  const box = new THREE.Box3().setFromObject(mesh);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z);
+  const distance = Math.max(maxDim * 3, state.modelScale * 0.3);
+  const dir = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
+  const targetPos = center.clone().add(dir.multiplyScalar(distance));
+
+  flyTo(targetPos, center, 700);
+  const label = mesh.userData.entry?.pref_label || mesh.name;
+  addToast(`🎯 Centré sur : ${label}`, 'ok');
+}
+
+function showStructureInfo(mesh) {
+  const e = mesh.userData.entry;
+  const name = e?.pref_label || mesh.name.replace(/^VH_[FM]_|^Allen_/i, '').replace(/_/g, ' ');
+  const cat = mesh.userData.category;
+  document.getElementById('structureLabel').textContent = name;
+  document.getElementById('structureCategory').textContent = cat.toUpperCase();
+  document.getElementById('structureId').textContent = e?.representation_of || '—';
+  document.getElementById('structureInfo').style.display = 'block';
+}
+
+/* ============================================================
+   HOVER / RAYCAST
+   ============================================================ */
+canvas.addEventListener('pointermove', (e) => {
+  if (meshList.length === 0) return;
+  const rect = canvas.getBoundingClientRect();
+  pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  const candidates = meshList.filter(x => x.visible && x.userData.category !== 'skin');
+  const hits = raycaster.intersectObjects(candidates, false);
+
+  if (hoveredMesh && hoveredMesh !== selectedMesh) {
+    highlight(hoveredMesh, false);
+    hoveredMesh = null;
+  }
+  if (hits.length) {
+    const mesh = hits[0].object;
+    if (mesh !== selectedMesh) {
+      hoveredMesh = mesh;
+      mesh.material.emissiveIntensity = 0.7;
+    }
+    showStructureInfo(mesh);
+    canvas.style.cursor = 'pointer';
+  } else {
+    if (!selectedMesh) document.getElementById('structureInfo').style.display = 'none';
+    else showStructureInfo(selectedMesh);
+    canvas.style.cursor = 'default';
+  }
+});
+
+canvas.addEventListener('pointerleave', () => {
+  if (hoveredMesh && hoveredMesh !== selectedMesh) {
+    highlight(hoveredMesh, false);
+    hoveredMesh = null;
+  }
+  if (!selectedMesh) document.getElementById('structureInfo').style.display = 'none';
+});
+
+canvas.addEventListener('click', () => {
+  if (hoveredMesh) selectMesh(hoveredMesh);
+});
+
+/* ============================================================
+   VUES CAMÉRA (animées)
+   ============================================================ */
+function setView(view) {
+  if (!currentModel) return;
+  const box = new THREE.Box3().setFromObject(currentModel);
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  const d = Math.max(size.x, size.y, size.z);
+  const positions = {
+    '3d':       [center.x + d * 0.6, center.y + d * 0.4, center.z + d * 1.2],
+    'front':    [center.x, center.y, center.z + d * 1.5],
+    'back':     [center.x, center.y, center.z - d * 1.5],
+    'axial':    [center.x, center.y + d * 1.5, center.z + 0.01],
+    'coronal':  [center.x, center.y, center.z + d * 1.5],
+    'sagittal': [center.x + d * 1.5, center.y, center.z + 0.01],
+    'reset':    [center.x, center.y, center.z + d * 1.4]
+  };
+  const p = positions[view] || positions['3d'];
+  const targetPos = new THREE.Vector3(...p);
+  flyTo(targetPos, center, 700);
+}
+
+document.querySelectorAll('.vp-tool[data-view]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.vp-tool').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setView(btn.dataset.view);
+  });
+});
+
+/* ============================================================
+   PAN MODE
+   ============================================================ */
+document.getElementById('btnPan').addEventListener('click', (e) => {
+  state.panMode = !state.panMode;
+  e.currentTarget.classList.toggle('active', state.panMode);
+  controls.mouseButtons = state.panMode
+    ? { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN }
+    : { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
+  document.getElementById('panStatus').textContent = state.panMode ? 'ON' : 'OFF';
+  document.getElementById('panStatus').style.color = state.panMode ? 'var(--green)' : 'var(--text-dim)';
+  addToast(state.panMode ? '✥ Mode Pan actif' : '🌐 Mode Rotation', 'ok');
+});
+
+/* ============================================================
+   X-RAY
+   ============================================================ */
+let xrayMode = false;
+document.getElementById('btnXRay').addEventListener('click', (e) => {
+  xrayMode = !xrayMode;
+  e.currentTarget.classList.toggle('active', xrayMode);
+  meshList.forEach(mesh => {
+    const cat = mesh.userData.category;
+    if (xrayMode) {
+      mesh.material.transparent = true;
+      if (cat === 'skin' || cat === 'other') {
+        mesh.material.opacity = 0.05;
+        mesh.material.depthWrite = false;
+      } else {
+        mesh.material.opacity = 1.0;
+        mesh.material.depthWrite = true;
+      }
+    } else {
+      mesh.material.opacity = mesh.userData.layerOpacity ?? 0.9;
+      mesh.material.depthWrite = (mesh.material.opacity >= 0.95 && cat !== 'skin');
+    }
+    mesh.material.needsUpdate = true;
+  });
+  addToast(xrayMode ? '🔍 Mode X-Ray ON' : '👁️ Mode normal', xrayMode ? 'purple' : 'ok');
+});
+
+/* ============================================================
+   SNAPSHOT PNG
+   ============================================================ */
+document.getElementById('btnSnapshot').addEventListener('click', () => {
+  renderer.render(scene, camera);
+  const link = document.createElement('a');
+  link.download = `atlas-${Date.now()}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  addToast('📸 Capture enregistrée', 'ok');
+});
+
+/* ============================================================
+   PLEIN ÉCRAN
+   ============================================================ */
+document.getElementById('btnFullscreen').addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {
+      addToast('⚠️ Plein écran impossible : ' + err.message, 'warn');
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+/* ============================================================
+   UI HANDLERS
+   ============================================================ */
+document.getElementById('systemSelect').addEventListener('change', (e) => {
+  state.system = e.target.value;
+  state.loadedId = null;
+  loadSystem();
+});
+document.getElementById('sexSelect').addEventListener('change', (e) => {
+  state.sex = e.target.value;
+  state.loadedId = null;
+  loadSystem();
+});
+
+['skin','organ','artery','vein','heart','brain','other'].forEach(cat => {
+  const el = document.getElementById(`f-${cat}`);
+  if (!el) return;
+  el.addEventListener('change', (e) => {
+    state.filters[cat] = e.target.checked;
+    applyFilters();
+  });
+});
+
+document.getElementById('f-labels').addEventListener('change', (e) => {
+  state.showLabels = e.target.checked;
+  labelsGroup.visible = state.showLabels;
+});
+
+document.getElementById('f-rotate').addEventListener('change', (e) => {
+  state.autoRotate = e.target.checked;
+  controls.autoRotate = state.autoRotate;
+});
+
+document.getElementById('f-grid').addEventListener('change', (e) => {
+  state.showGrid = e.target.checked;
+  gridHelper.visible = state.showGrid;
+});
+
+let searchTimer = null;
+document.getElementById('search').addEventListener('input', (e) => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    state.search = e.target.value;
+    applyFilters();
+    buildStructureList();
+  }, 150);
+});
+
+addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'Escape') {
+    if (selectedMesh) {
+      highlight(selectedMesh, false);
+      selectedMesh = null;
+      document.getElementById('structureInfo').style.display = 'none';
+      buildStructureList();
+    }
+  }
+  if (e.key === 'l' || e.key === 'L') {
+    const cb = document.getElementById('f-labels');
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  }
+  if (e.key === 'r' || e.key === 'R') {
+    const cb = document.getElementById('f-rotate');
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  }
+  if (e.key === 'p' || e.key === 'P') {
+    document.getElementById('btnPan').click();
+  }
+  if (e.key === 'i' || e.key === 'I') {
+    if (selectedMesh) {
+      meshList.forEach(mesh => { mesh.visible = (mesh === selectedMesh); });
+      addToast('🔬 Structure isolée — Échap pour restaurer', 'ok');
+    } else {
+      applyFilters();
+    }
+  }
+  if (e.key === 'Home' && currentModel) {
+    const box = new THREE.Box3().setFromObject(currentModel);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const targetPos = new THREE.Vector3(center.x, center.y, center.z + maxDim * 1.4);
+    flyTo(targetPos, center, 700);
+    addToast('⌂ Recentré', 'ok');
+  }
+});
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+function addToast(msg, type = '') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(40px)';
+    t.style.transition = 'all 0.4s';
+    setTimeout(() => t.remove(), 400);
+  }, 3500);
+}
+
+/* ============================================================
+   RESIZE + RENDER LOOP
+   ============================================================ */
+function resizeRenderer() {
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+  if (w === 0 || h === 0) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resizeRenderer);
+addEventListener('orientationchange', () => setTimeout(resizeRenderer, 300));
+
+const clock = new THREE.Clock();
+let frameCount = 0, lastFpsTime = performance.now();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = Math.min(clock.getDelta(), 0.1);
+  updateKeyboardPan(delta);
+  controls.update();
+  renderer.render(scene, camera);
+
+  frameCount++;
+  const now = performance.now();
+  if (now - lastFpsTime > 1000) {
+    document.getElementById('statusFps').textContent = `FPS : ${frameCount}`;
+    document.getElementById('statusTime').textContent = new Date().toTimeString().split(' ')[0];
+    frameCount = 0;
+    lastFpsTime = now;
+  }
+}
+
+/* ============================================================
+   FALLBACK THREE.JS
+   ============================================================ */
+setTimeout(() => {
+  if (typeof THREE === 'undefined') {
+    document.body.innerHTML = `
+      <div style="padding:40px;color:#ff6b6b;font-family:monospace;line-height:1.8;
+                  background:#05080f;min-height:100vh">
+        <h2>⚠️ Impossible de charger Three.js</h2>
+        <p>Vérifiez votre connexion internet (CDN unpkg.com).</p>
+      </div>`;
+  }
+}, 5000);
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+(async function boot() {
+  const required = [
+    '3d-vh-f-united.glb', '3d-vh-m-united.glb',
+    'united.json', 'united1.json'
+  ];
+  const missing = [];
+  for (const f of required) {
+    try {
+      const r = await fetch(f, { method: 'HEAD' });
+      if (!r.ok) missing.push(f);
+    } catch { missing.push(f); }
+  }
+  if (missing.length) {
+    document.body.innerHTML = `
+      <div style="padding:40px;color:#ff6b6b;font-family:monospace;line-height:1.8;
+                  background:#05080f;min-height:100vh">
+        <h2>⚠️ Fichiers manquants (${missing.length})</h2>
+        <ul>${missing.map(f => `<li>${f}</li>`).join('')}</ul>
+        <p style="color:#cfe">Vérifiez que les fichiers sont dans le dossier, puis relancez :<br>
+        <code style="background:#0a1520;padding:4px 8px;border-radius:4px">
+          python3 -m http.server 5013
+        </code></p>
+      </div>`;
+    return;
+  }
+
+  resizeRenderer();
+  animate();
+  await loadSystem();
+})();
+</script>
+
+</body>
+</html>

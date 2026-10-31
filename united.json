@@ -1,0 +1,2142 @@
+{
+  "$schema": "https://cdn.humanatlas.io/digital-objects/schema/ref-organ/latest/assets/schema.json",
+  "@context": "https://cdn.humanatlas.io/digital-objects/schema/ref-organ/latest/assets/schema.context.jsonld",
+  "@type": "Container",
+  "iri": "https://purl.humanatlas.io/ref-organ/united-female",
+  "metadata": {
+    "title": "united-female (v1.10) graph data",
+    "description": "The graph representation of the 3D Reference Organ Set for United, Female dataset.",
+    "created_by": [
+      "https://github.com/hubmapconsortium/hra-do-processor"
+    ],
+    "creation_date": "2026-06-09",
+    "version": "v1.10",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "publisher": "HuBMAP",
+    "see_also": "https://lod.humanatlas.io/ref-organ/united-female/v1.10",
+    "derived_from": "https://lod.humanatlas.io/ref-organ/united-female/v1.10#raw-data"
+  },
+  "data": [
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "x_dimension": 961.6948230435046,
+      "y_dimension": 1657.7779573267105,
+      "z_dimension": 327.1064671064292,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female integumentary system",
+      "pref_label": "united",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0013754",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 486.9428893999103,
+          "y_translation": 792.6127794693815,
+          "z_translation": 219.06889600157888,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female integumentary system",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female integumentary system",
+        "file_subpath": "VH_F_integumentary_system",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -486.9428893999103,
+          "y_translation": -792.6127794693815,
+          "z_translation": -219.06889600157888,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female integumentary system",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 0,
+      "type_of": [
+        "UBERON:0013754",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue",
+      "x_dimension": 188.56793800000003,
+      "y_dimension": 132.653921,
+      "z_dimension": 35.9612544,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female subcutaneous abdominal adipose tissue",
+      "pref_label": "subcutaneous abdominal adipose tissue",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0014455",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 105.939828,
+          "y_translation": -142.36033,
+          "z_translation": -58.179445599999994,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female subcutaneous abdominal adipose tissue",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female subcutaneous abdominal adipose tissue",
+        "file_subpath": "VH_F_subcutaneous_abdominal_adipose_tissue",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -105.939828,
+          "y_translation": 142.36033,
+          "z_translation": 58.179445599999994,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female subcutaneous abdominal adipose tissue",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_subcutaneous_abdominal_adipose_tissue",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 1,
+      "type_of": [
+        "UBERON:0014455",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin",
+      "x_dimension": 961.6948230435046,
+      "y_dimension": 1657.7779573267105,
+      "z_dimension": 327.1064671064292,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female skin",
+      "pref_label": "skin of body",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0002097",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 486.9428893999103,
+          "y_translation": 792.6127794693815,
+          "z_translation": 219.06889600157888,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female skin",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female skin",
+        "file_subpath": "VH_F_skin",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -486.9428893999103,
+          "y_translation": -792.6127794693815,
+          "z_translation": -219.06889600157888,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female skin",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_skin",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 2,
+      "type_of": [
+        "UBERON:0002097",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L",
+      "x_dimension": 128.15917729999998,
+      "y_dimension": 181.86628800000005,
+      "z_dimension": 111.85599350000001,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female mammary gland",
+      "pref_label": "Left mammary gland",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:57991",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -10.5845807,
+          "y_translation": -345.948756,
+          "z_translation": 22.4922635,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female mammary gland",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female mammary gland",
+        "file_subpath": "VH_F_mammary_gland_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 10.5845807,
+          "y_translation": 345.948756,
+          "z_translation": -22.4922635,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female mammary gland",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 3,
+      "type_of": [
+        "FMA:57991",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L",
+      "x_dimension": 128.15917729999998,
+      "y_dimension": 181.86628800000005,
+      "z_dimension": 105.5565589,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female fat",
+      "pref_label": "Interlobar adipose tissue of left mammary gland",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:73166",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -10.5845807,
+          "y_translation": -345.948756,
+          "z_translation": 22.4922635,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female fat",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female fat",
+        "file_subpath": "VH_F_fat_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 10.5845807,
+          "y_translation": 345.948756,
+          "z_translation": -22.4922635,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female fat",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 4,
+      "type_of": [
+        "FMA:73166",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L",
+      "x_dimension": 19.886749999999992,
+      "y_dimension": 22.177730999999994,
+      "z_dimension": 9.59823999999999,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female areolar tubercles",
+      "pref_label": "areolar tubercle",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0011828",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -92.34995,
+          "y_translation": -381.638169,
+          "z_translation": -77.83531,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female areolar tubercles",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female areolar tubercles",
+        "file_subpath": "VH_F_areolar_tubercles_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 92.34995,
+          "y_translation": 381.638169,
+          "z_translation": 77.83531,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female areolar tubercles",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 5,
+      "type_of": [
+        "UBERON:0011828",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L",
+      "x_dimension": 9.595894000000001,
+      "y_dimension": 10.526371999999924,
+      "z_dimension": 6.319834300000011,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female nipple",
+      "pref_label": "left nipple",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0013772",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -98.49318,
+          "y_translation": -386.33840000000004,
+          "z_translation": -83.0438957,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female nipple",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female nipple",
+        "file_subpath": "VH_F_nipple_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 98.49318,
+          "y_translation": 386.33840000000004,
+          "z_translation": 83.0438957,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female nipple",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 6,
+      "type_of": [
+        "UBERON:0013772",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L",
+      "x_dimension": 23.707864999999998,
+      "y_dimension": 25.307893999999976,
+      "z_dimension": 11.066364700000008,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female areola",
+      "pref_label": "Left female areola",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:223679",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -90.11046,
+          "y_translation": -379.593968,
+          "z_translation": -76.57103,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female areola",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female areola",
+        "file_subpath": "VH_F_areola_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 90.11046,
+          "y_translation": 379.593968,
+          "z_translation": 76.57103,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female areola",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 7,
+      "type_of": [
+        "FMA:223679",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L",
+      "x_dimension": 71.01441,
+      "y_dimension": 110.74996000000004,
+      "z_dimension": 55.2405457,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female mammary lobes",
+      "pref_label": "mammary lobe",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0018140",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -58.29666,
+          "y_translation": -358.169317,
+          "z_translation": -21.3390943,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female mammary lobes",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female mammary lobes",
+        "file_subpath": "VH_F_mammary_lobes_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 58.29666,
+          "y_translation": 358.169317,
+          "z_translation": 21.3390943,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female mammary lobes",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 8,
+      "type_of": [
+        "UBERON:0018140",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L",
+      "x_dimension": 57.488903300000004,
+      "y_dimension": 101.48922899999991,
+      "z_dimension": 57.13248999999999,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female main lactiferous ducts",
+      "pref_label": "main lactiferous duct",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0015134",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -68.89748569999999,
+          "y_translation": -361.15387100000004,
+          "z_translation": -31.6925645,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female main lactiferous ducts",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female main lactiferous ducts",
+        "file_subpath": "VH_F_main_lactiferous_ducts_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 68.89748569999999,
+          "y_translation": 361.15387100000004,
+          "z_translation": 31.6925645,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female main lactiferous ducts",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 9,
+      "type_of": [
+        "UBERON:0015134",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L",
+      "x_dimension": 18.34422400000001,
+      "y_dimension": 10.699748999999997,
+      "z_dimension": 13.062515799999986,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female main lactiferous sinuses",
+      "pref_label": "Lactiferous sinus",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:58088",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -90.56051,
+          "y_translation": -386.662215,
+          "z_translation": -73.8887042,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female main lactiferous sinuses",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female main lactiferous sinuses",
+        "file_subpath": "VH_F_main_lactiferous_sinuses_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 90.56051,
+          "y_translation": 386.662215,
+          "z_translation": 73.8887042,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female main lactiferous sinuses",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 10,
+      "type_of": [
+        "FMA:58088",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L",
+      "x_dimension": 68.39334170000001,
+      "y_dimension": 74.07260000000008,
+      "z_dimension": 47.2209946,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female suspensory ligaments",
+      "pref_label": "Suspensory ligament of left breast",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:73119",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -60.2723733,
+          "y_translation": -356.05949999999996,
+          "z_translation": -34.360915399999996,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female suspensory ligaments",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female suspensory ligaments",
+        "file_subpath": "VH_F_suspensory_ligaments_L",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 60.2723733,
+          "y_translation": 356.05949999999996,
+          "z_translation": 34.360915399999996,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female suspensory ligaments",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_L",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 11,
+      "type_of": [
+        "FMA:73119",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R",
+      "x_dimension": 128.30897649999997,
+      "y_dimension": 180.00367299999994,
+      "z_dimension": 113.18930399999999,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female mammary gland",
+      "pref_label": "Right mammary gland",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:57987",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 150.17043099999998,
+          "y_translation": -348.50636099999997,
+          "z_translation": 24.11806,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female mammary gland",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female mammary gland",
+        "file_subpath": "VH_F_mammary_gland_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -150.17043099999998,
+          "y_translation": 348.50636099999997,
+          "z_translation": -24.11806,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female mammary gland",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_gland_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 12,
+      "type_of": [
+        "FMA:57987",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R",
+      "x_dimension": 128.30897649999997,
+      "y_dimension": 180.00367299999994,
+      "z_dimension": 106.60803,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female fat",
+      "pref_label": "Interlobar adipose tissue of right mammary gland",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:73165",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 150.17043099999998,
+          "y_translation": -348.50636099999997,
+          "z_translation": 24.11806,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female fat",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female fat",
+        "file_subpath": "VH_F_fat_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -150.17043099999998,
+          "y_translation": 348.50636099999997,
+          "z_translation": -24.11806,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female fat",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_fat_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 13,
+      "type_of": [
+        "FMA:73165",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R",
+      "x_dimension": 19.891156999999993,
+      "y_dimension": 22.189408000000014,
+      "z_dimension": 9.524955500000004,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female areolar tubercles",
+      "pref_label": "areolar tubercle",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0011828",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 124.34171099999999,
+          "y_translation": -382.246435,
+          "z_translation": -77.6019245,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female areolar tubercles",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female areolar tubercles",
+        "file_subpath": "VH_F_areolar_tubercles_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -124.34171099999999,
+          "y_translation": 382.246435,
+          "z_translation": 77.6019245,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female areolar tubercles",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areolar_tubercles_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 14,
+      "type_of": [
+        "UBERON:0011828",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R",
+      "x_dimension": 9.600974999999991,
+      "y_dimension": 10.545880000000011,
+      "z_dimension": 6.335258499999995,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female nipple",
+      "pref_label": "right nipple",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0013773",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 120.18954,
+          "y_translation": -386.97475199999997,
+          "z_translation": -82.7359855,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female nipple",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female nipple",
+        "file_subpath": "VH_F_nipple_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -120.18954,
+          "y_translation": 386.97475199999997,
+          "z_translation": 82.7359855,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female nipple",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_nipple_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 15,
+      "type_of": [
+        "UBERON:0013773",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R",
+      "x_dimension": 23.725301,
+      "y_dimension": 25.30404699999997,
+      "z_dimension": 11.034903999999997,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female areola",
+      "pref_label": "Right female areola",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:223677",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 125.93224599999999,
+          "y_translation": -380.202353,
+          "z_translation": -76.30747000000001,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female areola",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female areola",
+        "file_subpath": "VH_F_areola_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -125.93224599999999,
+          "y_translation": 380.202353,
+          "z_translation": 76.30747000000001,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female areola",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_areola_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 16,
+      "type_of": [
+        "FMA:223677",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R",
+      "x_dimension": 18.344159000000005,
+      "y_dimension": 10.631453999999962,
+      "z_dimension": 13.109899999999996,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female main lactiferous sinuses",
+      "pref_label": "Lactiferous sinus",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:58088",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 121.0112,
+          "y_translation": -389.042646,
+          "z_translation": -73.54522,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female main lactiferous sinuses",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female main lactiferous sinuses",
+        "file_subpath": "VH_F_main_lactiferous_sinuses_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -121.0112,
+          "y_translation": 389.042646,
+          "z_translation": 73.54522,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female main lactiferous sinuses",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_sinuses_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 17,
+      "type_of": [
+        "FMA:58088",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R",
+      "x_dimension": 57.52310400000002,
+      "y_dimension": 101.27693400000004,
+      "z_dimension": 57.448201499999996,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female main lactiferous ducts",
+      "pref_label": "main lactiferous duct",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0015134",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 138.56053400000002,
+          "y_translation": -363.12094299999995,
+          "z_translation": -31.076278499999997,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female main lactiferous ducts",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female main lactiferous ducts",
+        "file_subpath": "VH_F_main_lactiferous_ducts_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -138.56053400000002,
+          "y_translation": 363.12094299999995,
+          "z_translation": 31.076278499999997,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female main lactiferous ducts",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_main_lactiferous_ducts_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 18,
+      "type_of": [
+        "UBERON:0015134",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R",
+      "x_dimension": 71.03819610000001,
+      "y_dimension": 110.61129999999997,
+      "z_dimension": 55.49972,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female mammary lobes",
+      "pref_label": "mammary lobe",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0018140",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 141.476,
+          "y_translation": -360.09360000000004,
+          "z_translation": -20.707079999999998,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female mammary lobes",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female mammary lobes",
+        "file_subpath": "VH_F_mammary_lobes_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -141.476,
+          "y_translation": 360.09360000000004,
+          "z_translation": 20.707079999999998,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female mammary lobes",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_mammary_lobes_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 19,
+      "type_of": [
+        "UBERON:0018140",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R",
+      "x_dimension": 67.95588000000001,
+      "y_dimension": 73.58199400000001,
+      "z_dimension": 46.599632799999995,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of female suspensory ligaments",
+      "pref_label": "Suspensory ligament of right breast",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "FMA:73118",
+      "organ_owner_sex": "Female",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R_obj",
+        "file_name": "3d-vh-f-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.10/assets/3d-vh-f-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 140.64911,
+          "y_translation": -358.247876,
+          "z_translation": -34.3235172,
+          "translation_unit": "millimeter",
+          "label": "Local placement of female suspensory ligaments",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of female suspensory ligaments",
+        "file_subpath": "VH_F_suspensory_ligaments_R",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHFemale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -140.64911,
+          "y_translation": 358.247876,
+          "z_translation": 34.3235172,
+          "translation_unit": "millimeter",
+          "label": "Global placement of female suspensory ligaments",
+          "source": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#VH_F_suspensory_ligaments_R",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-female/v1.10#primary",
+      "rui_rank": 20,
+      "type_of": [
+        "FMA:73118",
+        "ccf:SpatialEntity"
+      ]
+    }
+  ]
+}

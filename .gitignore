@@ -1,0 +1,11 @@
+*.bak
+*.tmp
+*.blend1
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+package-lock.json
+.vscode/
+.idea/
+*.swp

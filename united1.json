@@ -1,0 +1,627 @@
+{
+  "$schema": "https://cdn.humanatlas.io/digital-objects/schema/ref-organ/latest/assets/schema.json",
+  "@context": "https://cdn.humanatlas.io/digital-objects/schema/ref-organ/latest/assets/schema.context.jsonld",
+  "@type": "Container",
+  "iri": "https://purl.humanatlas.io/ref-organ/united-male",
+  "metadata": {
+    "title": "united-male (v1.10) graph data",
+    "description": "The graph representation of the 3D Reference Organ Set for United, Male dataset.",
+    "created_by": [
+      "https://github.com/hubmapconsortium/hra-do-processor"
+    ],
+    "creation_date": "2026-06-08",
+    "version": "v1.10",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "publisher": "HuBMAP",
+    "see_also": "https://lod.humanatlas.io/ref-organ/united-male/v1.10",
+    "derived_from": "https://lod.humanatlas.io/ref-organ/united-male/v1.10#raw-data"
+  },
+  "data": [
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "x_dimension": 1043.1527999999998,
+      "y_dimension": 1824.276069,
+      "z_dimension": 325.631246,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male integumentary system",
+      "pref_label": "united",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0013754",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 520.88157871,
+          "y_translation": 913.102269,
+          "z_translation": 167.211447436,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male integumentary system",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male integumentary system",
+        "file_subpath": "VH_M_integumentary_system",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -520.88157871,
+          "y_translation": -913.102269,
+          "z_translation": -167.211447436,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male integumentary system",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 0,
+      "type_of": [
+        "UBERON:0013754",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue",
+      "x_dimension": 201.779347,
+      "y_dimension": 200.69395,
+      "z_dimension": 33.909992,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male subcutaneous abdominal adipose tissue",
+      "pref_label": "subcutaneous abdominal adipose tissue",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0014455",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 105.325237,
+          "y_translation": -132.25017499999998,
+          "z_translation": -116.528034,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male subcutaneous abdominal adipose tissue",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male subcutaneous abdominal adipose tissue",
+        "file_subpath": "VH_M_subcutaneous_abdominal_adipose_tissue",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -105.325237,
+          "y_translation": 132.25017499999998,
+          "z_translation": 116.528034,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male subcutaneous abdominal adipose tissue",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 1,
+      "type_of": [
+        "UBERON:0014455",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area",
+      "x_dimension": 80.1238511,
+      "y_dimension": 76.89862,
+      "z_dimension": 22.337816999999987,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male subcutaneous abdominal adipose tissue U",
+      "pref_label": "subcutaneous abdominal adipose tissue LUQ area",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0014455",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -16.330258899999997,
+          "y_translation": -247.27781099999999,
+          "z_translation": -121.815927,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male subcutaneous abdominal adipose tissue U",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male subcutaneous abdominal adipose tissue U",
+        "file_subpath": "VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 16.330258899999997,
+          "y_translation": 247.27781099999999,
+          "z_translation": 121.815927,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male subcutaneous abdominal adipose tissue U",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_LUQ_area",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 2,
+      "type_of": [
+        "UBERON:0014455",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area",
+      "x_dimension": 79.665457,
+      "y_dimension": 95.92734299999998,
+      "z_dimension": 26.519149999999982,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male subcutaneous abdominal adipose tissue U",
+      "pref_label": "subcutaneous abdominal adipose tissue RUQ area",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0014455",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 105.325237,
+          "y_translation": -237.016782,
+          "z_translation": -116.528034,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male subcutaneous abdominal adipose tissue U",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male subcutaneous abdominal adipose tissue U",
+        "file_subpath": "VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -105.325237,
+          "y_translation": 237.016782,
+          "z_translation": 116.528034,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male subcutaneous abdominal adipose tissue U",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_RUQ_area",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 3,
+      "type_of": [
+        "UBERON:0014455",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area",
+      "x_dimension": 59.9499475,
+      "y_dimension": 61.572835,
+      "z_dimension": 11.01452599999999,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male subcutaneous abdominal adipose tissue umbilicus area",
+      "pref_label": "subcutaneous abdominal adipose tissue umbilicus area",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0014455",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 28.0320812,
+          "y_translation": -132.25017499999998,
+          "z_translation": -139.42350000000002,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male subcutaneous abdominal adipose tissue umbilicus area",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male subcutaneous abdominal adipose tissue umbilicus area",
+        "file_subpath": "VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -28.0320812,
+          "y_translation": 132.25017499999998,
+          "z_translation": 139.42350000000002,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male subcutaneous abdominal adipose tissue umbilicus area",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_subcutaneous_abdominal_adipose_tissue_umbilicus_area",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 4,
+      "type_of": [
+        "UBERON:0014455",
+        "ccf:SpatialEntity"
+      ]
+    },
+    {
+      "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin",
+      "x_dimension": 1043.1527999999998,
+      "y_dimension": 1824.276069,
+      "z_dimension": 325.631246,
+      "dimension_unit": "millimeter",
+      "label": "Spatial entity of male skin",
+      "pref_label": "skin of body",
+      "creators": [
+        {
+          "id": "https://orcid.org/0000-0003-4066-7531",
+          "label": "Kristen Browne",
+          "conforms_to": "Person",
+          "fullName": "Kristen Browne",
+          "firstName": "Kristen",
+          "lastName": "Browne",
+          "orcid": "0000-0003-4066-7531",
+          "type_of": [
+            "schema:Person"
+          ]
+        },
+        {
+          "id": "https://orcid.org/0000-0002-3333-5646",
+          "label": "Heidi Schlehlein",
+          "conforms_to": "Person",
+          "fullName": "Heidi Schlehlein",
+          "firstName": "Heidi",
+          "lastName": "Schlehlein",
+          "orcid": "0000-0002-3333-5646",
+          "type_of": [
+            "schema:Person"
+          ]
+        }
+      ],
+      "create_date": "2026-06-15",
+      "representation_of": "UBERON:0002097",
+      "organ_owner_sex": "Male",
+      "object_reference": {
+        "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin_obj",
+        "file_name": "3d-vh-m-united.glb",
+        "file_url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-male/v1.10/assets/3d-vh-m-united.glb",
+        "file_format": "model/gltf-binary",
+        "placement": {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin_obj_placement",
+          "target": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": -90,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": 520.88157871,
+          "y_translation": 913.102269,
+          "z_translation": 167.211447436,
+          "translation_unit": "millimeter",
+          "label": "Local placement of male skin",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin_obj",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        },
+        "label": "3D object of male skin",
+        "file_subpath": "VH_M_skin",
+        "type_of": [
+          "ccf:SpatialObjectReference"
+        ]
+      },
+      "placements": [
+        {
+          "id": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin_global_placement",
+          "target": "https://purl.humanatlas.io/graph/hra-ccf-body#VHMale",
+          "placement_date": "2026-06-15",
+          "x_scaling": 1,
+          "y_scaling": 1,
+          "z_scaling": 1,
+          "scaling_unit": "ratio",
+          "x_rotation": 0,
+          "y_rotation": 0,
+          "z_rotation": 0,
+          "rotation_unit": "degree",
+          "x_translation": -520.88157871,
+          "y_translation": -913.102269,
+          "z_translation": -167.211447436,
+          "translation_unit": "millimeter",
+          "label": "Global placement of male skin",
+          "source": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#VH_M_skin",
+          "type_of": [
+            "ccf:SpatialPlacement"
+          ]
+        }
+      ],
+      "reference_organ": "https://purl.humanatlas.io/ref-organ/united-male/v1.10#primary",
+      "rui_rank": 5,
+      "type_of": [
+        "UBERON:0002097",
+        "ccf:SpatialEntity"
+      ]
+    }
+  ]
+}
